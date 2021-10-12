@@ -15,6 +15,9 @@ public class TrackerApplication {
         logSystemInformation();
     }
 
+    /**
+     * Log system information
+     */
     private static void logSystemInformation() {
         logger.info("SystemInfo - Java version: {}", Runtime.version());
         Runtime runtime = Runtime.getRuntime();

@@ -4,13 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.UUID;
 
+
+/**
+ * class represent session
+ * -one session for many event
+ * -one session per user (user id)
+ *
+ * @author Hrushikesh Sakunde
+ * @since 12.10.20
+ */
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,21 +31,19 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private UUID userId;
 
     @Column(nullable = false)
     private UUID machineId;
 
-    @Column
-    private Long orgId ;
+    @Column(nullable = false)
+    private Integer orgId;
 
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
+    @Column
     private LocalDateTime startAt;
 
-    @LastModifiedDate
-    @Column(nullable = false)
+    @Column
     private LocalDateTime endAt;
 
     @OneToMany(mappedBy = "session", fetch = FetchType.LAZY,

@@ -11,6 +11,15 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
+/**
+ * Base class to store events
+ * -many events per session
+ *
+ * @author Hrushikesh Sakunde
+ * @since 12.10.20
+ */
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
