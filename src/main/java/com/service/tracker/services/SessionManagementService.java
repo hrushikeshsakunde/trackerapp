@@ -1,7 +1,6 @@
 package com.service.tracker.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.service.tracker.Mapper.CreateSessionRequestToSessionMapper;
+import com.service.tracker.mapper.CreateSessionRequestToSessionMapper;
 import com.service.tracker.dto.CreateSessionRequest;
 import com.service.tracker.dto.EndSessionRequest;
 import com.service.tracker.dto.SessionResponse;

@@ -1,4 +1,4 @@
-package com.service.tracker.Mapper;
+package com.service.tracker.mapper;
 
 import com.service.tracker.dto.CreateSessionRequest;
 import com.service.tracker.model.Session;

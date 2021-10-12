@@ -1,8 +1,7 @@
 package com.service.tracker.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.service.tracker.Mapper.CreateSessionRequestToSessionMapper;
-import com.service.tracker.TrackerApplication;
+import com.service.tracker.mapper.CreateSessionRequestToSessionMapper;
 import com.service.tracker.dto.CreateSessionRequest;
 import com.service.tracker.dto.EndSessionRequest;
 import com.service.tracker.dto.SessionResponse;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 

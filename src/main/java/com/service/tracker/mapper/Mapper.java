@@ -1,4 +1,4 @@
-package com.service.tracker.Mapper;
+package com.service.tracker.mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;

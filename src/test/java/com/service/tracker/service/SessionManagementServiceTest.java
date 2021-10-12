@@ -1,13 +1,12 @@
 package com.service.tracker.service;
 
-import com.service.tracker.Mapper.CreateSessionRequestToSessionMapper;
+import com.service.tracker.mapper.CreateSessionRequestToSessionMapper;
 import com.service.tracker.dto.CreateSessionRequest;
 import com.service.tracker.dto.EndSessionRequest;
 import com.service.tracker.dto.SessionResponse;
 import com.service.tracker.model.Session;
 import com.service.tracker.repository.SessionRepository;
 import com.service.tracker.services.SessionManagementService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
