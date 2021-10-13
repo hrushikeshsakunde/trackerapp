@@ -1,19 +1,15 @@
 package com.service.tracker.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.service.tracker.mapper.CreateSessionRequestToSessionMapper;
 import com.service.tracker.dto.CreateSessionRequest;
 import com.service.tracker.dto.EndSessionRequest;
 import com.service.tracker.dto.SessionResponse;
+import com.service.tracker.mapper.CreateSessionRequestToSessionMapper;
 import com.service.tracker.repository.SessionRepository;
 import com.service.tracker.services.SessionManagementService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.time.LocalDateTime;
@@ -23,14 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@SpringBootTest
-@AutoConfigureMockMvc
-public class sessionControllerTest {
-
-    @Autowired
-    protected ObjectMapper objectMapper;
-    @Autowired
-    private MockMvc mockMvc;
+public class SessionControllerTest extends BaseControllerTest {
 
     @Autowired
     private SessionManagementService sessionManagementService;
@@ -57,7 +46,7 @@ public class sessionControllerTest {
 
 
     @Test
-    public void testCreateSession_ThrowExceptionTest() throws Exception {
+    public void testCreateSession_Throw_BadException() throws Exception {
 
         CreateSessionRequest createSessionRequest = new CreateSessionRequest(UUID.randomUUID(), UUID.randomUUID(), 1234, "teststamp");
 
@@ -71,7 +60,7 @@ public class sessionControllerTest {
 
 
     @Test
-    public void testEndSession_ThrowNotFoundExceptionTest() throws Exception {
+    public void testEndSession_Throw_NotFoundException() throws Exception {
 
         EndSessionRequest endSessionRequest = new EndSessionRequest(UUID.randomUUID(), LocalDateTime.now().toString());
 
@@ -85,7 +74,7 @@ public class sessionControllerTest {
 
 
     @Test
-    public void testEndSessionTest() throws Exception {
+    public void testEndSession() throws Exception {
 
         // Create session
         CreateSessionRequest createSessionRequest = new CreateSessionRequest(UUID.randomUUID(), UUID.randomUUID(), 1234, LocalDateTime.now().toString());
@@ -109,7 +98,6 @@ public class sessionControllerTest {
                 .andExpect(status().isAccepted());
 
     }
-
 
 
 }

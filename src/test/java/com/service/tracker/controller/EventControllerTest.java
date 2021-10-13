@@ -1,6 +1,5 @@
 package com.service.tracker.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.tracker.dto.CreateEventRequest;
 import com.service.tracker.dto.CreateSessionRequest;
 import com.service.tracker.dto.EventDto;
@@ -14,10 +13,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.time.LocalDateTime;
@@ -29,28 +25,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@SpringBootTest
-@AutoConfigureMockMvc
-public class EventControllerTest {
+public class EventControllerTest extends BaseControllerTest {
 
-    @Autowired
-    protected ObjectMapper objectMapper;
-    @Autowired
-    private MockMvc mockMvc;
+    private final List<EventDto> events = new ArrayList<>();
 
     @Autowired
     private EventManagementService eventManagementService;
-
     @Autowired
     private SessionRepository sessionRepository;
-
     @Autowired
     private EventRepository eventRepository;
-
     @Autowired
     private EventDtoToEventMapper eventDtoToEventMapper;
-
-    private final List<EventDto> events = new ArrayList<>();
 
     @BeforeEach
     private void setUp() {

@@ -34,7 +34,7 @@ public class SessionManagementServiceTest {
 
 
     @Test
-    void testCreateSessionTest() {
+    void testCreateSession() {
 
         CreateSessionRequest createSessionRequest = new CreateSessionRequest(UUID.randomUUID(), UUID.randomUUID(), 1234, LocalDateTime.now().toString());
         Session session = new Session();
@@ -50,7 +50,24 @@ public class SessionManagementServiceTest {
     }
 
     @Test
-    void testEndSessionTest() {
+    void testCreateSession_ExistingUser() {
+
+        CreateSessionRequest createSessionRequest = new CreateSessionRequest(UUID.randomUUID(), UUID.randomUUID(), 1234, LocalDateTime.now().toString());
+        Session session = new Session();
+        session.setUserId(createSessionRequest.getUserId());
+        session.setMachineId(createSessionRequest.getMachineId());
+
+        when(createSessionRequestToSessionMapper.from(createSessionRequest)).thenReturn(session);
+        when(sessionRepository.findSessionByUserIdAndMachineIdAndEndAtIsNull(any(UUID.class), any(UUID.class))).thenReturn(Optional.of(session));
+
+        tested.createSession(createSessionRequest);
+        verify(sessionRepository, times(0)).save(any(Session.class));
+
+    }
+
+
+    @Test
+    void testEndSession() {
 
         EndSessionRequest endSessionRequest = new EndSessionRequest(UUID.randomUUID(), LocalDateTime.now().toString());
         when(sessionRepository.findById(any(UUID.class))).thenReturn(Optional.of(new Session()));
